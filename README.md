@@ -15,7 +15,7 @@ This project was developed for a study propose to learn more about algorithms an
 1. Install dependencies
 
    ```bash
-   npm install
+   yarn install
    ```
 
 2. Start the app
