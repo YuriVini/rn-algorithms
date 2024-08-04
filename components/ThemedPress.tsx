@@ -54,7 +54,6 @@ export function ThemedPress({
                 {children}
             </TouchableOpacity>
         </Animated.View>
-
     );
 }
 
