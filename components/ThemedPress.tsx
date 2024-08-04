@@ -63,8 +63,7 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 38,
         borderRadius: 8,
-        shadowColor: '#000',
-        shadowOpacity: 0.2,
+
         alignItems: 'center',
         justifyContent: 'center',
     },
