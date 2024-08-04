@@ -2,10 +2,10 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { StyleSheet } from 'react-native';
 
 import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { ThemedPress } from '@/components/ThemedPress';
 
 export default function TabTwoScreen() {
   return (
@@ -13,22 +13,17 @@ export default function TabTwoScreen() {
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
       headerImage={<Ionicons size={310} name="code-slash" style={styles.headerImage} />}>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
+        <ThemedText type="title">Data Structure</ThemedText>
       </ThemedView>
-      <Collapsible title="File-based routing">
+      <Collapsible title="Stack">
         <ThemedView style={styles.titleContainer}>
           <ThemedText>
-            This app has two screens:{' '}
-            <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-            <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
+            The stack is a ordered colections' list of items that follows the principle of LIFO (Last In First Out).
+            This means that, the last item to enter is the first item to exit.
           </ThemedText>
-          <ThemedText>
-            The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-            sets up the tab navigator.
-          </ThemedText>
-          <ExternalLink href="https://docs.expo.dev/router/introduction">
-            <ThemedText type="link">Learn more</ThemedText>
-          </ExternalLink>
+          <ThemedPress>
+            <ThemedText>See how it works</ThemedText>
+          </ThemedPress>
         </ThemedView>
       </Collapsible>
     </ParallaxScrollView>
@@ -43,7 +38,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   titleContainer: {
-    flexDirection: 'row',
+    paddingLeft: 24,
     gap: 8,
+  },
+  description: {
+    paddingLeft: 24,
   },
 });
