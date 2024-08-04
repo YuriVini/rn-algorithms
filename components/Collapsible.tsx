@@ -40,7 +40,7 @@ export function Collapsible({ children, title }: PropsWithChildren & { title: st
       </TouchableOpacity>
       <Animated.View style={animatedHeightStyle} >
         <View style={{ position: 'absolute', top: 0, left: 0 }}>
-          <View ref={animatedRef} collapsable={false}  >{children}</View>
+          <View ref={animatedRef} collapsable={false}>{children}</View>
         </View>
       </Animated.View>
     </ThemedView>
