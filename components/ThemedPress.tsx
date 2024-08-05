@@ -8,7 +8,7 @@ export type ThemedPressProps = PropsWithChildren & TouchableOpacityProps & {
     lightColor?: string;
     darkColor?: string;
     style?: StyleProp<ViewStyle>
-    type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
+    type?: 'default';
 };
 
 export function ThemedPress({
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 38,
         borderRadius: 8,
-
         alignItems: 'center',
         justifyContent: 'center',
     },
