@@ -95,27 +95,28 @@ export default function StackDataStructureScreen() {
 
 const styles = StyleSheet.create({
     headerImage: {
-        color: '#808080',
-        bottom: -60,
         left: 0,
+        bottom: -60,
         position: 'absolute',
+        color: Colors.dark.icon,
     },
     boxContainer: {
+        height: 60,
+        borderWidth: 1,
+        borderRadius: 4,
         alignSelf: 'center',
         alignItems: 'center',
         flexDirection: 'row',
         paddingHorizontal: 10,
         borderColor: Colors.dark.button,
-        borderWidth: 1,
-        borderRadius: 4,
-        height: 60,
     },
     boxContent: {
+        height: 50,
+        zIndex: 1000,
         borderRadius: 4,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: Colors.dark.button,
-        height: 50,
     },
     buttonsContainer: {
         gap: 10,
