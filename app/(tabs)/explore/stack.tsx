@@ -27,9 +27,8 @@ type IStackActions = {
 export default function StackDataStructureScreen() {
     const { width } = Dimensions.get("window");
 
-    const reducer = (state: IStackItems, action: IStackActions) => {
-        switch (action.type) {
-            case STACK_ACTIONS.PUSH: {
+    const currentIndex = useSharedValue(1)
+    const [stack, setStack] = useState<number[]>([1])
                 return {
                     count: state.count + 1,
                     items: [...state.items, state.items.push(state.count + 1)]
@@ -49,18 +48,17 @@ export default function StackDataStructureScreen() {
     const [stack, dispatch] = useReducer<Reducer<IStackItems, IStackActions>>(reducer, { count: 1, items: [1] })
 
     const push = () => {
-        if (stack?.count > 4) Alert.alert("You can't push more than 5 items to stack")
-        else dispatch({ type: STACK_ACTIONS.PUSH })
+        if (stack?.length > 4) return Alert.alert("You can't push more than 5 items to stack")
+
+        currentIndex.value++;
+        setStack(prev => [...prev, prev.push(prev.length + 1)])
     }
 
     const pop = () => {
-        if (stack?.count <= 1) return Alert.alert("You can't pop less than 1 item to stack")
-        dispatch({ type: STACK_ACTIONS.POP })
+        if (stack?.length <= 1) return Alert.alert("You can't pop less than 1 item to stack")
 
-    }
-
-    const peek = () => {
-
+        currentIndex.value--;
+        setStack(prev => prev.slice(0, prev?.length - 1))
     }
 
     return (
