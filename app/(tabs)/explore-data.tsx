@@ -21,9 +21,20 @@ export default function ExploreScreen() {
                     <ThemedText>
                         A stack is a linear data structure that follows the Last-In-First-Out (LIFO) principle.
                         It allows adding and removing elements from one end called the top.
-                        The basic operations include push (add an element to the top), pop (remove an element from the top), and peek (view the top element).
                     </ThemedText>
-                    <ThemedPress onPress={() => router.navigate("/explore/stack")}>
+                    <ThemedPress onPress={() => router.navigate("/stack-data")}>
+                        <ThemedText>See how it works</ThemedText>
+                    </ThemedPress>
+                </ThemedView>
+            </Collapsible>
+
+            <Collapsible title="Queue">
+                <ThemedView style={styles.titleContainer}>
+                    <ThemedText>
+                        A queue is a linear data structure that follows the First-In-First-Out (FIFO) principle.
+                        The adding is done at the tail and the removing is done at the head.
+                    </ThemedText>
+                    <ThemedPress onPress={() => router.navigate("/queue-data")}>
                         <ThemedText>See how it works</ThemedText>
                     </ThemedPress>
                 </ThemedView>
