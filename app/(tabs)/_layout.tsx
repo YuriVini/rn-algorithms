@@ -1,4 +1,4 @@
-import { Tabs } from 'expo-router';
+import { Stack, Tabs } from 'expo-router';
 import React from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
@@ -13,7 +13,8 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
@@ -23,15 +24,17 @@ export default function TabLayout() {
           ),
         }}
       />
+
       <Tabs.Screen
-        name="explore"
+        name="explore-data"
         options={{
           title: 'Explore',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
           ),
         }}
-      />
+      >
+      </Tabs.Screen>
     </Tabs>
   );
 }
