@@ -1,51 +1,65 @@
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedPress } from "@/components/ThemedPress";
+import { useState } from "react";
+import { Octicons } from "@expo/vector-icons";
+import { Alert, Dimensions, StyleSheet } from "react-native";
+import Animated, { EntryAnimationsValues, ExitAnimationsValues, useSharedValue, withSequence, withTiming } from "react-native-reanimated";
+
+import { Colors } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { Colors } from "@/constants/Colors";
-import { Octicons } from "@expo/vector-icons";
-import { Reducer, useReducer, } from "react";
-import { Alert, Dimensions, StyleSheet } from "react-native";
-
-enum STACK_ACTIONS {
-    PUSH = "push",
-    POP = "pop",
-    PEEK = "peek"
-}
-
-type IStackItems = {
-    count: number;
-    items: number[];
-}
-
-type IStackActions = {
-    type: STACK_ACTIONS
-    payload?: any;
-}
-
+import { ThemedPress } from "@/components/ThemedPress";
+import ParallaxScrollView from "@/components/ParallaxScrollView";
 
 export default function StackDataStructureScreen() {
     const { width } = Dimensions.get("window");
 
     const currentIndex = useSharedValue(1)
     const [stack, setStack] = useState<number[]>([1])
-                return {
-                    count: state.count + 1,
-                    items: [...state.items, state.items.push(state.count + 1)]
-                }
-            }
-            case STACK_ACTIONS.POP: {
-                return {
-                    count: state.count - 1,
-                    items: state.items.slice(0, state.count - 1)
-                }
-            }
-            default:
-                return { ...state }
-        }
-    }
 
-    const [stack, dispatch] = useReducer<Reducer<IStackItems, IStackActions>>(reducer, { count: 1, items: [1] })
+    const entering = (targetValues: EntryAnimationsValues) => {
+        'worklet';
+
+        const animations = {
+            originX: withTiming(targetValues.targetOriginX, { duration: 1000 }),
+            opacity: withTiming(1, { duration: 500 }),
+        };
+        const initialValues = {
+            originX: width - (width / currentIndex.value),
+            opacity: 0,
+        };
+        return {
+            initialValues,
+            animations,
+        };
+    };
+
+    const exiting = (values: ExitAnimationsValues) => {
+        'worklet';
+
+        const animations = {
+            originY: withTiming(-230, { duration: 1000 }),
+            originX: withTiming(width, { duration: 1900 }),
+            opacity: withTiming(0.5, { duration: 2000 }),
+            transform: [
+                { rotate: withTiming('720deg', { duration: 1500 }) },
+                { scale: withSequence(withTiming(0.5), withTiming(0.7)) }
+            ],
+        };
+        const initialValues = {
+            originY: values.currentOriginY,
+            originX: values.currentOriginX,
+            opacity: 1,
+            transform: [
+                { rotate: '0deg' },
+                { scale: 1 },
+            ],
+        };
+        return {
+            initialValues,
+            animations,
+        };
+    };
+
+
 
     const push = () => {
         if (stack?.length > 4) return Alert.alert("You can't push more than 5 items to stack")
@@ -69,10 +83,14 @@ export default function StackDataStructureScreen() {
             <ThemedText type="title">Data Structure: Stack</ThemedText>
 
             <ThemedView style={[{ width: width * 0.9, gap: width * 0.02, }, styles.boxContainer]}>
-                {stack?.items?.map((item) => (
-                    <ThemedView key={item} style={[{ width: width / 6.5 }, styles.boxContent]}>
-                        <ThemedText type="defaultSemiBold">{item}</ThemedText>
-                    </ThemedView>
+                {stack?.map((item) => (
+                    <Animated.View key={item} style={{ zIndex: 1000 }} entering={entering} exiting={exiting}>
+                        <ThemedView style={[{ width: width / 6.5 }, styles.boxContent]}>
+                            <Animated.View>
+                                <ThemedText type="defaultSemiBold">{item}</ThemedText>
+                            </Animated.View>
+                        </ThemedView>
+                    </Animated.View>
                 ))}
             </ThemedView>
 
@@ -82,9 +100,6 @@ export default function StackDataStructureScreen() {
                 </ThemedPress>
                 <ThemedPress onPress={pop}>
                     <ThemedText type="defaultSemiBold">Pop</ThemedText>
-                </ThemedPress>
-                <ThemedPress onPress={peek}>
-                    <ThemedText type="defaultSemiBold">Peek</ThemedText>
                 </ThemedPress>
             </ThemedView>
         </ParallaxScrollView>
