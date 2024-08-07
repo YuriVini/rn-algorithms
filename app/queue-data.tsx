@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Octicons } from "@expo/vector-icons";
 import { Alert, Dimensions, StyleSheet } from "react-native";
-import Animated, { ExitAnimationsValues, EntryAnimationsValues, LayoutAnimationsValues, useSharedValue, withDelay, withRepeat, withSequence, withTiming } from "react-native-reanimated";
+import Animated, { ExitAnimationsValues, EntryAnimationsValues, LayoutAnimationsValues, useSharedValue, withDelay, withRepeat, withSequence, withTiming, interpolateColor } from "react-native-reanimated";
 
 import Queue from "@/data-structure/queue";
 import { Colors } from "@/constants/Colors";
