@@ -111,7 +111,6 @@ export default function QueueDataStructureScreen() {
         queue.dequeue()
         setTop(queue.peek());
         setSize(queue.size());
-
     }
 
     return (
@@ -123,12 +122,8 @@ export default function QueueDataStructureScreen() {
 
             <ThemedView style={[{ width: width * 0.9, gap: width * 0.02, zIndex: 1000 }, styles.boxContainer]}>
                 {queue?.items?.map((item) => (
-                    <Animated.View key={item} layout={layout} entering={entering} exiting={exiting as any}>
-                        <ThemedView style={[{ width: width / 6.5 }, styles.boxContent]}>
-                            <Animated.View>
-                                <ThemedText type="defaultSemiBold">{item}</ThemedText>
-                            </Animated.View>
-                        </ThemedView>
+                    <Animated.View key={item} style={[{ width: width / 6.5 }, styles.boxContent]} layout={layout} entering={entering} exiting={exiting as any}>
+                        <ThemedText type="defaultSemiBold">{item}</ThemedText>
                     </Animated.View>
                 ))}
             </ThemedView>
