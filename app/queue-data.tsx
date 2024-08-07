@@ -19,6 +19,23 @@ export default function QueueDataStructureScreen() {
     const [queue] = useState(new Queue<number>([1]))
     const [top, setTop] = useState("");
     const [size, setSize] = useState(0);
+    const entering = (targetValues: EntryAnimationsValues) => {
+        'worklet';
+
+        const animations = {
+            originX: withTiming(targetValues.targetOriginX, { duration: 1000 }),
+            opacity: withTiming(1, { duration: 500 }),
+        };
+        const initialValues = {
+            originX: (width / currentIndex.value),
+            opacity: 0,
+        };
+
+        return {
+            initialValues,
+            animations,
+        };
+    };
 
     const enqueue = () => {
         if (queue.size() > 4) return Alert.alert("You can't push more than 5 items to stack")
