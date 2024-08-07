@@ -111,7 +111,7 @@ export default function QueueDataStructureScreen() {
 
             <ThemedView style={[{ width: width * 0.9, gap: width * 0.02, }, styles.boxContainer]}>
                 {queue?.items?.map((item) => (
-                    <Animated.View key={item} style={{ zIndex: 1000 }}>
+                    <Animated.View key={item} layout={layout} entering={entering} exiting={exiting as any}>
                         <ThemedView style={[{ width: width / 6.5 }, styles.boxContent]}>
                             <Animated.View>
                                 <ThemedText type="defaultSemiBold">{item}</ThemedText>
