@@ -14,11 +14,13 @@ const ANGLE = 10
 const TIME = 100
 
 export default function QueueDataStructureScreen() {
-    const { width } = Dimensions.get("window");
+    const { width, height } = Dimensions.get("window");
 
+    const currentIndex = useSharedValue(1)
     const [queue] = useState(new Queue<number>([1]))
     const [top, setTop] = useState("");
     const [size, setSize] = useState(0);
+
     const entering = (targetValues: EntryAnimationsValues) => {
         'worklet';
 
@@ -36,6 +38,7 @@ export default function QueueDataStructureScreen() {
             animations,
         };
     };
+
     const layout = (values: LayoutAnimationsValues) => {
         'worklet';
 
@@ -56,6 +59,7 @@ export default function QueueDataStructureScreen() {
             initialValues,
         };
     }
+
     const exiting = (targetValues: ExitAnimationsValues) => {
         'worklet';
 
@@ -109,7 +113,7 @@ export default function QueueDataStructureScreen() {
         >
             <ThemedText type="title">Data Structure: Queue</ThemedText>
 
-            <ThemedView style={[{ width: width * 0.9, gap: width * 0.02, }, styles.boxContainer]}>
+            <ThemedView style={[{ width: width * 0.9, gap: width * 0.02, zIndex: 1000 }, styles.boxContainer]}>
                 {queue?.items?.map((item) => (
                     <Animated.View key={item} layout={layout} entering={entering} exiting={exiting as any}>
                         <ThemedView style={[{ width: width / 6.5 }, styles.boxContent]}>
@@ -163,11 +167,8 @@ const styles = StyleSheet.create({
     },
     buttonsContainer: {
         gap: 10,
-        width: '100%',
-        marginBottom: 20,
-        paddingVertical: 10,
+        marginVertical: 10,
         flexDirection: 'row',
-        paddingHorizontal: 10,
         justifyContent: 'space-between',
     }
 });
