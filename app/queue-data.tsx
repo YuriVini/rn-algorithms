@@ -74,8 +74,15 @@ export default function QueueDataStructureScreen() {
                     )
                 }
             ],
+            backgroundColor: interpolateColor(
+                progress.value,
+                [0, 1],
+                ['red', Colors.dark.button],
+            ),
+
         };
         const initialValues = {
+            backgroundColor: Colors.dark.button,
             originY: targetValues.currentOriginY,
             transform: [
                 { rotateZ: '0deg' },
