@@ -10,6 +10,9 @@ import { ThemedView } from "@/components/ThemedView";
 import { ThemedPress } from "@/components/ThemedPress";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 
+const ANGLE = 10
+const TIME = 100
+
 export default function QueueDataStructureScreen() {
     const { width } = Dimensions.get("window");
 
