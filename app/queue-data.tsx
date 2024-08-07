@@ -17,6 +17,7 @@ export default function QueueDataStructureScreen() {
     const { width, height } = Dimensions.get("window");
 
     const currentIndex = useSharedValue(1)
+    const progress = useSharedValue(0)
     const [queue] = useState(new Queue<number>([1]))
     const [top, setTop] = useState("");
     const [size, setSize] = useState(0);
