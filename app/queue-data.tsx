@@ -56,6 +56,33 @@ export default function QueueDataStructureScreen() {
             initialValues,
         };
     }
+    const exiting = (targetValues: ExitAnimationsValues) => {
+        'worklet';
+
+        const animations = {
+            originY: withDelay(600, withTiming(height, { duration: 1000 })),
+            transform: [
+                {
+                    rotateZ: withSequence(
+                        withTiming(-ANGLE, { duration: TIME / 2 }),
+                        withRepeat(withTiming(ANGLE, { duration: TIME }), 7, true),
+                        withTiming(0, { duration: TIME / 2, })
+                    )
+                }
+            ],
+        };
+        const initialValues = {
+            originY: targetValues.currentOriginY,
+            transform: [
+                { rotateZ: '0deg' },
+            ],
+        };
+
+        return {
+            initialValues,
+            animations,
+        };
+    };
 
     const enqueue = () => {
         if (queue.size() > 4) return Alert.alert("You can't push more than 5 items to stack")
