@@ -27,7 +27,7 @@ export default function ExploreScreen() {
             elements from one end called the top.
           </ThemedText>
           <ThemedPress onPress={() => router.navigate('/stack-data')}>
-            <ThemedText>See how it works</ThemedText>
+            <ThemedText type='button'>See how it works</ThemedText>
           </ThemedPress>
         </ThemedView>
       </Collapsible>
@@ -40,7 +40,7 @@ export default function ExploreScreen() {
             and the removing is done at the head.
           </ThemedText>
           <ThemedPress onPress={() => router.navigate('/queue-data')}>
-            <ThemedText>See how it works</ThemedText>
+            <ThemedText type='button'>See how it works</ThemedText>
           </ThemedPress>
         </ThemedView>
       </Collapsible>

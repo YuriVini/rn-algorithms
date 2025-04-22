@@ -99,7 +99,7 @@ export default function StackDataStructureScreen() {
           >
             <ThemedView style={[{ width: width / 6.5 }, styles.boxContent]}>
               <Animated.View>
-                <ThemedText type='defaultSemiBold'>{item}</ThemedText>
+                <ThemedText type='button'>{item}</ThemedText>
               </Animated.View>
             </ThemedView>
           </Animated.View>
@@ -107,10 +107,10 @@ export default function StackDataStructureScreen() {
       </ThemedView>
       <ThemedView style={styles.buttonsContainer}>
         <ThemedPress onPress={push}>
-          <ThemedText type='defaultSemiBold'>Push</ThemedText>
+          <ThemedText type='button'>Push</ThemedText>
         </ThemedPress>
         <ThemedPress onPress={pop}>
-          <ThemedText type='defaultSemiBold'>Pop</ThemedText>
+          <ThemedText type='button'>Pop</ThemedText>
         </ThemedPress>
       </ThemedView>
     </ParallaxScrollView>

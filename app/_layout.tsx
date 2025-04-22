@@ -31,10 +31,8 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-        <Stack.Screen name='stack-data' options={{ headerShown: false }} />
-        <Stack.Screen name='queue-data' options={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name='(tabs)' />
       </Stack>
     </ThemeProvider>
   )

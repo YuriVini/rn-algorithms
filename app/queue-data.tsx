@@ -148,17 +148,17 @@ export default function QueueDataStructureScreen() {
             entering={entering}
             exiting={exiting as any}
           >
-            <ThemedText type='defaultSemiBold'>{item}</ThemedText>
+            <ThemedText type='button'>{item}</ThemedText>
           </Animated.View>
         ))}
       </ThemedView>
 
       <ThemedView style={styles.buttonsContainer}>
         <ThemedPress onPress={enqueue}>
-          <ThemedText type='defaultSemiBold'>Enqueue</ThemedText>
+          <ThemedText type='button'>Enqueue</ThemedText>
         </ThemedPress>
         <ThemedPress onPress={dequeue}>
-          <ThemedText type='defaultSemiBold'>Dequeue</ThemedText>
+          <ThemedText type='button'>Dequeue</ThemedText>
         </ThemedPress>
       </ThemedView>
 
