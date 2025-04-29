@@ -13,34 +13,46 @@ export default function ExploreScreen() {
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
       headerImage={
-        <Ionicons size={310} name='code-slash' style={styles.headerImage} />
+        <Ionicons size={310} name="code-slash" style={styles.headerImage} />
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type='title'>Data Structure</ThemedText>
+        <ThemedText type="title">Data Structure</ThemedText>
       </ThemedView>
-      <Collapsible title='Stack'>
+
+      <Collapsible title="Stack">
         <ThemedView style={styles.titleContainer}>
           <ThemedText>
-            A stack is a linear data structure that follows the
-            Last-In-First-Out (LIFO) principle. It allows adding and removing
-            elements from one end called the top.
+            A stack is a linear data structure that follows the Last-In-First-Out (LIFO) principle. It
+            allows adding and removing elements from one end called the top.
           </ThemedText>
           <ThemedPress onPress={() => router.navigate('/stack-data')}>
-            <ThemedText type='button'>See how it works</ThemedText>
+            <ThemedText type="button">See how it works</ThemedText>
           </ThemedPress>
         </ThemedView>
       </Collapsible>
 
-      <Collapsible title='Queue'>
+      <Collapsible title="Queue">
         <ThemedView style={styles.titleContainer}>
           <ThemedText>
-            A queue is a linear data structure that follows the
-            First-In-First-Out (FIFO) principle. The adding is done at the tail
-            and the removing is done at the head.
+            A queue is a linear data structure that follows the First-In-First-Out (FIFO) principle.
+            The adding is done at the tail and the removing is done at the head.
           </ThemedText>
           <ThemedPress onPress={() => router.navigate('/queue-data')}>
-            <ThemedText type='button'>See how it works</ThemedText>
+            <ThemedText type="button">See how it works</ThemedText>
+          </ThemedPress>
+        </ThemedView>
+      </Collapsible>
+
+      <Collapsible title="Selection Sort">
+        <ThemedView style={styles.titleContainer}>
+          <ThemedText>
+            Selection sort is a simple and efficient sorting algorithm that works by repeatedly
+            selecting the minimum element from the unsorted portion of the array and swapping it with
+            the first element.
+          </ThemedText>
+          <ThemedPress onPress={() => router.navigate('/selection-sort')}>
+            <ThemedText type="button">See how it works</ThemedText>
           </ThemedPress>
         </ThemedView>
       </Collapsible>
